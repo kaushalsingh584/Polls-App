@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block bodyblock %}
+
+<h3>Username : {{ user.username }}
+    Email : {{user.email}}
+
+    {% for q in ques %}
+    <li>
+        {{q}}
+    </li>
+    {% endfor %}
+</h3>
+
+
+{% endblock %}

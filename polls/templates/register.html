@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block bodyblock %}
+
+    <!-- begiinning -->
+    <br>
+    <div class="text-center"> <u><h3 >Register </h3></u>
+    already have a account? <a href = "{% url 'login' %}">login</a></div>
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-10 col-md-8 col-lg-6">
+    
+     <form method="POST" action="/register-view">
+            {% csrf_token %}
+            <div class="form-group">
+            <label for="id_username">Username</label>        
+            <input type = "text" class="form-control" name = "register_username" placeholder = "Enter username" required id="id_username">
+            </div>
+    
+            <div class="form-group">
+            <label for="id_email">Email</label>
+            <input class="form-control" type="email" name="register_email" required id="id_email" placeholder = "Enter Email">
+            </div>
+            <div class="form-group">
+                <label for="id_password1">Password1</label>
+                <input  class="form-control" type="password" name="register_password1" autocomplete="new-password" required="" id="id_password1" placeholder = "Enter Password1">
+            </div>
+            <div class="form-group">
+                <label for="id_password2">Password2</label>
+                <input class="form-control" type="password" name="register_password2" autocomplete="new-password" required="" id="id_password2" placeholder = "Enter Password2">
+            </div>
+
+            <ul>
+                {% for error in form.password.errors %}
+                    <li>{{ error }}</li>    
+                {% endfor %}
+            </ul>
+
+            <button type = "submit" class="btn btn-primary" >Submit</button>
+            
+        </form>
+        <!-- {% for message in messages %}
+    
+    <div class="alert alert-success">
+        <a class="close" href="#" data-dismiss="alert">×</a>
+           {{ message }}
+    </div> -->
+
+{% endfor %}
+    
+    </div>
+    </div>
+    </div>
+
+    
+    {% for message in messages %}
+    
+    <div class="alert alert-success">
+        <a class="close" href="#" data-dismiss="alert">×</a>
+           {{ message }}
+    </div>
+
+{% endfor %}
+
+    {% endblock %}

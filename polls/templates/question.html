@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block bodyblock %}
+
+
+<p><h3>This is the vote page!{{pk}}</h3></p>
+
+
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        
+<div class="container h-75">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+
+<h3 style = "text-align: center"><strong>{{pk}}
+    
+    {{question}}</strong></h3>
+        <form method  = "POST" action = "{% url 'result' question.id %}">
+            {% csrf_token %}
+            <ul class="list-group" style="margin:0px">
+                {% for option in options %}
+                
+                <label>
+                    <li class="list-group-item">
+                        <input class="form-check-input me-1" type="radio" name = 'choice' value="{{option.id}}" aria-label="...">
+                        {{option.answer_text}}
+                    </li>
+                </label>
+                {% endfor %}
+
+            
+        </ul>
+        <input type="submit" value = "Submit" class = 'btn btn-primary'>
+        </form>
+                <form method  = "POST" action = "{% url 'delete_poll' question.id %}">
+                    {% csrf_token %}
+                <input type="submit" value = "Delete" class = 'btn btn-danger'>
+                </form>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
