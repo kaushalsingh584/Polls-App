@@ -2,15 +2,22 @@
 {% load static %}
 {% block bodyblock %}
 
-<h3>Username : {{ user.username }}
+<div class="container h-75">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+<h3>Username : {{ user.username }}<br>
     Email : {{user.email}}
 
+    Your Polls:<br>
     {% for q in ques %}
     <li>
         {{q}}
     </li>
     {% endfor %}
 </h3>
+</div>
+</div>
+</div>
 
 
 {% endblock %}
