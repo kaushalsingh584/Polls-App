@@ -53,7 +53,7 @@ def register(request):
 
 
 def login_handle(request):
-    print("yasssssssssssssssssssss")
+    
     if request.method == 'POST':
         req_username = request.POST['login_username']
         req_password = request.POST['login_password']
@@ -107,7 +107,7 @@ def create_poll(request):
         # myuser.password = req_password1
         mypoll.save()
 
-        messages(request,"user created successfully")
+        messages(request,"poll created successfully")
     else:
         return render(request,'register.html')
         return redirect('/')
