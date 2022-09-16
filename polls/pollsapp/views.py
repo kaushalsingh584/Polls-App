@@ -187,3 +187,8 @@ def polls_delete(request, pk):
     messages.success(request, "Poll Deleted successfully.",
                      extra_tags='alert alert-success alert-dismissible fade show')
     return redirect("index")
+
+
+
+# ##################################################################################################
+# creating apis
